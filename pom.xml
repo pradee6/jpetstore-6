@@ -224,21 +224,24 @@
         </plugin>
         <plugin>
           <groupId>org.codehaus.cargo</groupId>
-          <artifactId>cargo-maven3-plugin</artifactId>
-          <version>${cargo-maven3-plugin.version}</version>
-          <configuration>
-            <container>
-              <containerId>${cargo.maven.containerId}</containerId>
-              <zipUrlInstaller>
-                <url>${cargo.maven.containerUrl}</url>
-              </zipUrlInstaller>
-            </container>
-            <daemon>
-              <properties>
-                <cargo.daemon.url>http://localhost:18000</cargo.daemon.url>
-                <cargo.daemon.handleid>${project.artifactId}</cargo.daemon.handleid>
-              </properties>
-            </daemon>
+  <artifactId>cargo-maven3-plugin</artifactId>
+  <version>${cargo-maven3-plugin.version}</version>
+  <configuration>
+    <container>
+      <containerId>${cargo.maven.containerId}</containerId>
+      <zipUrlInstaller>
+        <url>${cargo.maven.containerUrl}</url>
+      </zipUrlInstaller>
+    </container>
+    <properties>
+      <cargo.servlet.port>8081</cargo.servlet.port> <!-- Ensure this matches your Tomcat configuration -->
+    </properties>
+    <daemon>
+      <properties>
+        <cargo.daemon.url>http://localhost:18000</cargo.daemon.url>
+        <cargo.daemon.handleid>${project.artifactId}</cargo.daemon.handleid>
+      </properties>
+    </daemon>
           </configuration>
         </plugin>
       </plugins>
